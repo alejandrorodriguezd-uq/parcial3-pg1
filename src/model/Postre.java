@@ -2,7 +2,6 @@ package model;
 
 public class Postre {
     //ATRIBUTOS
-    private double pesoGramos;
-    private int temperaturaAlmacenamiento;
+    private double pesoGramos, temperaturaAlmacenamiento;
     private boolean requiereRefrigeracion;
 }
