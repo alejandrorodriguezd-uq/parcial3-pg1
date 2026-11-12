@@ -9,6 +9,7 @@ public class Pedido {
     //ATRIBUTOS
     private int codigo;
     private LocalDate fecha;
+    private double precioTotal;
 
     //RELACION
     private ModalidadEntrega modalidadEntrega;
@@ -27,7 +28,7 @@ public class Pedido {
      * @param empresaDomicilio del Pedido
      * @param cliente del Pedido
      */
-    public Pedido(int codigo, LocalDate fecha, ModalidadEntrega modalidadEntrega, EstadoPedido estadoPedido, List<DetallePedido> listDetallesPedido, Domicilio empresaDomicilio, Cliente cliente) {
+    public Pedido(int codigo, LocalDate fecha, ModalidadEntrega modalidadEntrega, EstadoPedido estadoPedido, List<DetallePedido> listDetallesPedido, Domicilio empresaDomicilio, Cliente cliente, double precioTotal) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.modalidadEntrega = modalidadEntrega;
@@ -35,6 +36,7 @@ public class Pedido {
         this.listDetallesPedido = listDetallesPedido;
         this.empresaDomicilio = empresaDomicilio;
         this.cliente = cliente;
+        this.precioTotal=precioTotal;
     }
 
     /**
@@ -53,7 +55,7 @@ public class Pedido {
         Pedido pedido= busccarPedido(codigo);
         if(pedido==null){
             List<DetallePedido> listDetalle= DetallePedido.agregarProductos();
-            Pedido nuevoPedido= new Pedido(codigo,fecha,modalidadEntrega,estadoPedido,listDetalle, empresaDomicilio,cliente);
+            Pedido nuevoPedido= new Pedido(codigo,fecha,modalidadEntrega,estadoPedido,listDetalle, empresaDomicilio,cliente,0);
             Restaurante.listPedidosRestaurante.add(nuevoPedido);
             cliente.getListPedidosCliente().add(nuevoPedido);
             JOptionPane.showMessageDialog(null, " Pedido agregado exitosamente");
@@ -61,6 +63,31 @@ public class Pedido {
             JOptionPane.showMessageDialog(null, "el codigo de este pedido ya existe. Intente de nuevo");
         }
         return mensaje;
+    }
+
+    /**
+     * Metodo para calcular precio total del pedido;
+     * @param codigo del pedido
+     * @return
+     */
+    public String calcularPrecioPedido(int codigo){
+        double precioTotal=0;
+        Pedido pedido= busccarPedido(codigo);
+        List<DetallePedido> listDetalle= pedido.getListDetallesPedido();
+        for(DetallePedido detalle: listDetalle){
+            precioTotal+= detalle.getPrecioUnitario()*detalle.getCantidad();
+        }
+
+        JOptionPane.showMessageDialog(null, "costo total de productos es de: "+precioTotal);
+
+        if(pedido.getEmpresaDomicilio()!=null){
+            JOptionPane.showMessageDialog(null, "El costo de domicilio es de: "+ pedido.getEmpresaDomicilio().CalcularDimicilio());
+            precioTotal+= pedido.getEmpresaDomicilio().CalcularDimicilio();
+        }
+
+        pedido.setPrecioTotal(precioTotal);
+
+        return pedido.toString();
     }
 
     /**
@@ -134,5 +161,26 @@ public class Pedido {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public double getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(double precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "codigo=" + codigo +
+                ", fecha=" + fecha +
+                ", precioTotal=" + precioTotal +
+                ", modalidadEntrega=" + modalidadEntrega +
+                ", estadoPedido=" + estadoPedido +
+                ", empresaDomicilio=" + empresaDomicilio +
+                ", cliente=" + cliente.getNombreCompleto() +
+                '}';
     }
 }

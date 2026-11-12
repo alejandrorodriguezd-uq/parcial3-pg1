@@ -72,6 +72,23 @@ public class Cliente {
         return existe;
     }
 
+    /**
+     * metodo para consultar histrial de pedidos del cleinte
+     * @param documento del cliente
+     * @return
+     */
+
+    public String consultarHistorialPedidos(int documento){
+        Cliente cliente= busccarCliente(documento);
+        String mensaje="";
+        for(Pedido pedido: cliente.listPedidosCliente ){
+            mensaje+=pedido.toString()+"\n";
+        }
+        return mensaje;
+    }
+
+
+
     public List<Pedido> getListPedidosCliente() {
         return listPedidosCliente;
     }
