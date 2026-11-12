@@ -1,4 +1,4 @@
 package model;
 
-public class RapidoExpress {
+public class RapidoExpress implements Domicilio{
 }

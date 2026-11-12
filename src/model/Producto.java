@@ -6,6 +6,8 @@ public abstract class Producto {
     private String codigo, nombre, descripcion;
     private double precioBase;
 
+    //RELACIONES
+
     /**
      * Método constructor de Producto
      * @param tiempoPreparacion

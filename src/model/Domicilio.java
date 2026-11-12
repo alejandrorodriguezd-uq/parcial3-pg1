@@ -1,4 +1,4 @@
 package model;
 
-public interface Domicilio {
+public interface Domicilio{
 }

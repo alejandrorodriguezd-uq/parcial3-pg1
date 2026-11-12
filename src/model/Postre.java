@@ -1,17 +1,23 @@
 package model;
 
-public class Postre {
+public class Postre extends Producto{
     //ATRIBUTOS
     private double pesoGramos, temperaturaAlmacenamiento;
     private boolean requiereRefrigeracion;
 
     /**
      * Método constructor de Postre
+     * @param tiempoPreparacion
+     * @param codigo
+     * @param nombre
+     * @param descripcion
+     * @param precioBase
      * @param pesoGramos
      * @param temperaturaAlmacenamiento
      * @param requiereRefrigeracion
      */
-    public Postre(double pesoGramos, double temperaturaAlmacenamiento, boolean requiereRefrigeracion) {
+    public Postre(int tiempoPreparacion, String codigo, String nombre, String descripcion, double precioBase, double pesoGramos, double temperaturaAlmacenamiento, boolean requiereRefrigeracion) {
+        super(tiempoPreparacion, codigo, nombre, descripcion, precioBase);
         this.pesoGramos = pesoGramos;
         this.temperaturaAlmacenamiento = temperaturaAlmacenamiento;
         this.requiereRefrigeracion = requiereRefrigeracion;

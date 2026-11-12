@@ -1,6 +1,6 @@
 package model;
 
-public class Bebida {
+public class Bebida extends Producto{
     //ATRIBUTOS
     private int volumenMililitros;
     private double temperaturaServicio;
@@ -8,12 +8,18 @@ public class Bebida {
 
     /**
      * Método constructor de Bebida
+     * @param tiempoPreparacion
+     * @param codigo
+     * @param nombre
+     * @param descripcion
+     * @param precioBase
      * @param volumenMililitros
      * @param temperaturaServicio
      * @param esFria
      * @param requierePreparacionEspecial
      */
-    public Bebida(int volumenMililitros, double temperaturaServicio, boolean esFria, boolean requierePreparacionEspecial) {
+    public Bebida(int tiempoPreparacion, String codigo, String nombre, String descripcion, double precioBase, int volumenMililitros, double temperaturaServicio, boolean esFria, boolean requierePreparacionEspecial) {
+        super(tiempoPreparacion, codigo, nombre, descripcion, precioBase);
         this.volumenMililitros = volumenMililitros;
         this.temperaturaServicio = temperaturaServicio;
         this.esFria = esFria;

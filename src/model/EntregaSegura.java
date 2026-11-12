@@ -1,4 +1,4 @@
 package model;
 
-public class EntregaSegura {
+public class EntregaSegura implements Domicilio{
 }

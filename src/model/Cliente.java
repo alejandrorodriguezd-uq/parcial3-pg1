@@ -1,8 +1,15 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
     //ATRIBUTOS
-    private String documento, telefono, nombreCompleto, correoElectronico, direccionResidencia;
+    private String documento, nombreCompleto, correoElectronico, direccionResidencia;
+    private int telefono;
+    
+    //RELACIONES
+    private List<Pedido> listPedidosCliente;
 
     /**
      * Método constructor de Cliente
@@ -12,16 +19,24 @@ public class Cliente {
      * @param correoElectronico
      * @param direccionResidencia
      */
-    public Cliente(String documento, String telefono, String nombreCompleto, String correoElectronico, String direccionResidencia) {
+    public Cliente(String documento, int telefono, String nombreCompleto, String correoElectronico, String direccionResidencia) {
         this.documento = documento;
         this.telefono = telefono;
         this.nombreCompleto = nombreCompleto;
         this.correoElectronico = correoElectronico;
         this.direccionResidencia = direccionResidencia;
+        this.listPedidosCliente = new ArrayList<>();
     }
 
     //======================================= MÉTODOS =======================================
 
+    public List<Pedido> getListPedidosCliente() {
+        return listPedidosCliente;
+    }
+
+    public void setListPedidosCliente(List<Pedido> listPedidosCliente) {
+        this.listPedidosCliente = listPedidosCliente;
+    }
 
     public String getDocumento() {
         return documento;
@@ -31,11 +46,11 @@ public class Cliente {
         this.documento = documento;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 

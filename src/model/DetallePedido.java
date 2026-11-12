@@ -1,10 +1,16 @@
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DetallePedido {
     //ATRIBUTOS
     private String producto;
     private int cantidad;
     private double precioUnitario;
+
+    //RELACIONES
+    private List<Producto> listProductosPedido;
 
     /**
      * Método constructor de Detalle Pedido
@@ -16,10 +22,18 @@ public class DetallePedido {
         this.producto = producto;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
+        this.listProductosPedido = new ArrayList<>();
     }
 
     //======================================= MÉTODOS =======================================
 
+    public List<Producto> getListProductosPedido() {
+        return listProductosPedido;
+    }
+
+    public void setListProductosPedido(List<Producto> listProductosPedido) {
+        this.listProductosPedido = listProductosPedido;
+    }
 
     public String getProducto() {
         return producto;
