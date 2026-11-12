@@ -5,20 +5,21 @@ import java.util.List;
 
 public class Restaurante {
     //ATRIBUTOS
-    private String nombreComercial, nit, direccion;
+    private String nombreComercial, direccion;
+    private int nit;
 
     //RELACIONES
-    public List<Producto> listProductosRestaurante;
-    public List<Pedido> listPedidosRestaurante;
-    public List<Cliente> listClientesRestaurante;
+    public static List<Producto> listProductosRestaurante;
+    public static List<Pedido> listPedidosRestaurante;
+    public static  List<Cliente> listClientesRestaurante;
 
     /**
      * Método constructor de Restaurante
-     * @param nombreComercial
-     * @param nit
-     * @param direccion
+     * @param nombreComercial del restaurante
+     * @param nit del restaurante
+     * @param direccion del restaurante
      */
-    public Restaurante(String nombreComercial, String nit, String direccion) {
+    public Restaurante(String nombreComercial, int nit, String direccion) {
         this.nombreComercial = nombreComercial;
         this.nit = nit;
         this.direccion = direccion;
@@ -62,11 +63,11 @@ public class Restaurante {
         this.nombreComercial = nombreComercial;
     }
 
-    public String getNit() {
+    public int getNit() {
         return nit;
     }
 
-    public void setNit(String nit) {
+    public void setNit(int nit) {
         this.nit = nit;
     }
 

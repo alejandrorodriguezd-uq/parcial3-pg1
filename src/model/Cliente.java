@@ -5,21 +5,21 @@ import java.util.List;
 
 public class Cliente {
     //ATRIBUTOS
-    private String documento, nombreCompleto, correoElectronico, direccionResidencia;
-    private int telefono;
+    private String  nombreCompleto, correoElectronico, direccionResidencia;
+    private int telefono, documento;
     
     //RELACIONES
     private List<Pedido> listPedidosCliente;
 
     /**
      * Método constructor de Cliente
-     * @param documento
-     * @param telefono
-     * @param nombreCompleto
-     * @param correoElectronico
-     * @param direccionResidencia
+     * @param documento del cliente
+     * @param telefono del cliente
+     * @param nombreCompleto del cliente
+     * @param correoElectronico del cliente
+     * @param direccionResidencia del cliente
      */
-    public Cliente(String documento, int telefono, String nombreCompleto, String correoElectronico, String direccionResidencia) {
+    public Cliente(int  documento, int telefono, String nombreCompleto, String correoElectronico, String direccionResidencia) {
         this.documento = documento;
         this.telefono = telefono;
         this.nombreCompleto = nombreCompleto;
@@ -30,6 +30,48 @@ public class Cliente {
 
     //======================================= MÉTODOS =======================================
 
+    /**
+     * Metodod para registrar clientes
+     * @param documento del cliente
+     * @param telefono del cliente
+     * @param nombreCompleto del cliente
+     * @param correoElectronico del cliente
+     * @param direccionResidencia del cliente
+     * @return
+     */
+
+    public String registrarCliente (int documento, int telefono, String nombreCompleto, String correoElectronico, String direccionResidencia){
+         String mensaje= "";
+         Cliente cliente =busccarCliente(documento);
+         if(cliente==null){
+             Cliente nuevoCliente= new Cliente(documento,telefono,nombreCompleto,correoElectronico,direccionResidencia);
+             Restaurante.listClientesRestaurante.add(cliente);
+             mensaje="Cliente registrado";
+         }else{
+             mensaje="No se pudo registrar. Ya hay un cliente con este documento";
+         }
+         return mensaje;
+    }
+
+    /**
+     * Metodo para buscar cliente
+     * @param documento del cliente
+     * @return
+     */
+
+    public Cliente busccarCliente(int documento){
+
+        Cliente existe= null;
+        for( int i= 0; i<Restaurante.listClientesRestaurante.size(); i++){
+
+            Cliente cliente= Restaurante.listClientesRestaurante.get(i);
+            if(cliente.getDocumento()==documento){
+                existe=cliente;
+            }
+        }
+        return existe;
+    }
+
     public List<Pedido> getListPedidosCliente() {
         return listPedidosCliente;
     }
@@ -38,11 +80,11 @@ public class Cliente {
         this.listPedidosCliente = listPedidosCliente;
     }
 
-    public String getDocumento() {
+    public int getDocumento() {
         return documento;
     }
 
-    public void setDocumento(String documento) {
+    public void setDocumento(int documento) {
         this.documento = documento;
     }
 

@@ -2,29 +2,62 @@ package model;
 
 public abstract class Producto {
     //ATRIBUTOS
-    private int tiempoPreparacion;
-    private String codigo, nombre, descripcion;
-    private double precioBase;
+    private int tiempoPreparacion, codigo;
+    private String  nombre, descripcion;
+    private double precioBase, precioVenta;
 
     //RELACIONES
 
     /**
      * Método constructor de Producto
-     * @param tiempoPreparacion
-     * @param codigo
-     * @param nombre
-     * @param descripcion
-     * @param precioBase
+     * @param tiempoPreparacion del Producto
+     * @param codigo del Producto
+     * @param nombre del Producto
+     * @param descripcion del Producto
+     * @param precioBase del Producto
+     * @param precioVenta del preducto
      */
-    public Producto(int tiempoPreparacion, String codigo, String nombre, String descripcion, double precioBase) {
+    public Producto(int tiempoPreparacion, int codigo, String nombre, String descripcion, double precioBase,double precioVenta) {
         this.tiempoPreparacion = tiempoPreparacion;
         this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precioBase = precioBase;
+        this.precioVenta=precioVenta;
     }
 
     //======================================= MÉTODOS =======================================
+
+    /**
+     * Metodo para buscarPorducto
+     * @param codigo del Producto
+     * @return
+     */
+
+    public static Producto buscarProducto ( int codigo){
+        Producto existe = null;
+        for (int i=0; i<Restaurante.listProductosRestaurante.size(); i++){
+            Producto producto= Restaurante.listProductosRestaurante.get(i);
+            if(producto.getCodigo()==codigo){
+                existe=producto;
+            }
+        }
+        return existe;
+    }
+
+    /**
+     * metodo para calcular precio de venta de los productos
+     * @param precioBase del producto
+     * @return
+     */
+    public abstract double calcularPrecioVenta(double precioBase, boolean preparacionEspecial, boolean refrigeracion);
+
+    /**
+     * Metdodo para verificar el control de calidad de los productos
+     * @return
+     */
+    public abstract boolean verificarControlCalidad();
+
 
 
     public int getTiempoPreparacion() {
@@ -35,11 +68,11 @@ public abstract class Producto {
         this.tiempoPreparacion = tiempoPreparacion;
     }
 
-    public String getCodigo() {
+    public int getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(String codigo) {
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
 
@@ -65,6 +98,14 @@ public abstract class Producto {
 
     public void setPrecioBase(double precioBase) {
         this.precioBase = precioBase;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
     }
 
     @Override
