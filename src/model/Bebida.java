@@ -68,9 +68,6 @@ public class Bebida extends Producto{
     public double calcularPrecioVenta(double precioBase, boolean preparacionEspecial, boolean refrigeracion){
 
         double precioVenta= precioBase+(precioBase*0.10);
-        if (refrigeracion){
-            precioVenta+=precioBase*0.05;
-        }
         if(preparacionEspecial){
             precioVenta+=3000;
         }

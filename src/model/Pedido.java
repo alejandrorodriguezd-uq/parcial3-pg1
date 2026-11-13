@@ -81,8 +81,8 @@ public class Pedido {
         JOptionPane.showMessageDialog(null, "costo total de productos es de: "+precioTotal);
 
         if(pedido.getEmpresaDomicilio()!=null){
-            JOptionPane.showMessageDialog(null, "El costo de domicilio es de: "+ pedido.getEmpresaDomicilio().CalcularDimicilio());
-            precioTotal+= pedido.getEmpresaDomicilio().CalcularDimicilio();
+            double valorDomicilio=pedido.getEmpresaDomicilio().CalcularDimicilio();
+            precioTotal+=valorDomicilio ;
         }
 
         pedido.setPrecioTotal(precioTotal);

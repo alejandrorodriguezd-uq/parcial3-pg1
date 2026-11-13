@@ -45,7 +45,7 @@ public class Cliente {
          Cliente cliente =busccarCliente(documento);
          if(cliente==null){
              Cliente nuevoCliente= new Cliente(documento,telefono,nombreCompleto,correoElectronico,direccionResidencia);
-             Restaurante.listClientesRestaurante.add(cliente);
+             Restaurante.listClientesRestaurante.add(nuevoCliente);
              mensaje="Cliente registrado";
          }else{
              mensaje="No se pudo registrar. Ya hay un cliente con este documento";
@@ -63,7 +63,6 @@ public class Cliente {
 
         Cliente existe= null;
         for( int i= 0; i<Restaurante.listClientesRestaurante.size(); i++){
-
             Cliente cliente= Restaurante.listClientesRestaurante.get(i);
             if(cliente.getDocumento()==documento){
                 existe=cliente;
@@ -82,7 +81,7 @@ public class Cliente {
         Cliente cliente= busccarCliente(documento);
         String mensaje="";
         for(Pedido pedido: cliente.listPedidosCliente ){
-            mensaje+=pedido.toString()+"\n";
+            mensaje+= pedido.toString()+"\n";
         }
         return mensaje;
     }
