@@ -38,7 +38,7 @@ public class Postre extends Producto{
      * @return
      */
 
-    public String registrarPostre (int tiempoPreparacion, int codigo, String nombre, String descripcion, double precioBase, double pesoGramos, double temperaturaAlmacenamiento, boolean requiereRefrigeracion){
+    public String registrarPostre(int tiempoPreparacion, int codigo, String nombre, String descripcion, double precioBase, double pesoGramos, double temperaturaAlmacenamiento, boolean requiereRefrigeracion){
         String mensaje ="";
         Producto producto= buscarProducto(codigo);
         if(producto==null){

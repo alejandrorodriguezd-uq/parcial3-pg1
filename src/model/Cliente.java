@@ -40,7 +40,7 @@ public class Cliente {
      * @return
      */
 
-    public String registrarCliente (int documento, int telefono, String nombreCompleto, String correoElectronico, String direccionResidencia){
+    public static String registrarCliente (int documento, int telefono, String nombreCompleto, String correoElectronico, String direccionResidencia){
          String mensaje= "";
          Cliente cliente =busccarCliente(documento);
          if(cliente==null){
@@ -59,7 +59,7 @@ public class Cliente {
      * @return
      */
 
-    public Cliente busccarCliente(int documento){
+    public static Cliente busccarCliente(int documento){
 
         Cliente existe= null;
         for( int i= 0; i<Restaurante.listClientesRestaurante.size(); i++){
@@ -77,7 +77,7 @@ public class Cliente {
      * @return
      */
 
-    public String consultarHistorialPedidos(int documento){
+    public static String consultarHistorialPedidos(int documento){
         Cliente cliente= busccarCliente(documento);
         String mensaje="";
         for(Pedido pedido: cliente.listPedidosCliente ){

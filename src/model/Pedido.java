@@ -50,7 +50,7 @@ public class Pedido {
      * @return
      */
 
-    public String registrarPedido(int codigo, LocalDate fecha, ModalidadEntrega modalidadEntrega, EstadoPedido estadoPedido, Domicilio empresaDomicilio, Cliente cliente){
+    public static String registrarPedido(int codigo, LocalDate fecha, ModalidadEntrega modalidadEntrega, EstadoPedido estadoPedido, Domicilio empresaDomicilio, Cliente cliente){
         String mensaje ="";
         Pedido pedido= busccarPedido(codigo);
         if(pedido==null){
@@ -70,7 +70,7 @@ public class Pedido {
      * @param codigo del pedido
      * @return
      */
-    public String calcularPrecioPedido(int codigo){
+    public static String calcularPrecioPedido(int codigo){
         double precioTotal=0;
         Pedido pedido= busccarPedido(codigo);
         List<DetallePedido> listDetalle= pedido.getListDetallesPedido();
@@ -96,7 +96,7 @@ public class Pedido {
      * @return
      */
 
-    public Pedido busccarPedido(int codigo){
+    public static Pedido busccarPedido(int codigo){
         Pedido existe= null;
         for( int i= 0; i<Restaurante.listPedidosRestaurante.size(); i++){
             Pedido pedido= Restaurante.listPedidosRestaurante.get(i);
